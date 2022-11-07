@@ -3187,6 +3187,12 @@ function createMessageCard(notificationSummary, notificationColor, commit, autho
             avatar_url = author.avatar_url;
         }
     }
+    let author_url = '';
+    if (author) {
+        if (author.login && author.html_url) {
+            author_url = `[(@${author.login})](${author.html_url})`;
+        }
+    }
     const messageCard = {
         '@type': 'MessageCard',
         '@context': 'https://schema.org/extensions',
@@ -3197,7 +3203,7 @@ function createMessageCard(notificationSummary, notificationColor, commit, autho
             {
                 activityTitle: `**CI #${runNum} (commit ${sha.substr(0, 7)})** on [${repoName}](${repoUrl})`,
                 activityImage: avatar_url,
-                activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`
+                activitySubtitle: `by ${commit.data.commit.author.name} ${author_url} on ${timestamp}`
             }
         ],
         potentialAction: [
