@@ -59,16 +59,16 @@ async function run(): Promise<void> {
 
     axios
       .post(msTeamsWebhookUri, messageCard)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response)
         core.debug(response.data)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         core.debug(error)
       })
   } catch (error) {
     console.log(error)
-    core.setFailed(error.message)
+    core.setFailed(error instanceof Error ? error.message : (error as string))
   }
 }
 
