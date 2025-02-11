@@ -4,6 +4,10 @@
 
 Continues https://github.com/marketplace/actions/microsoft-teams-notification
 
+⚠️ Should not be used anymore, we now need to use another action to support new format used by microsofot workflows.
+
+More Information https://github.com/jdcargile/ms-teams-notification/issues/70#issuecomment-2465431981
+
 Usage:
 ```yaml
 - name: Microsoft Teams Notifications
